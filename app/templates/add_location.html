@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Location</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            padding: 20px;
+            color: #fff;
+            height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .dashboard-heading {
+            text-align: center;
+            color: #fff;
+
+        }
+
+        .dashboard-item {
+            margin-bottom: 20px;
+        }
+
+        .dashboard-item a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .dashboard-item a:hover {
+            background-color: #495057;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <a href="{% url 'admin-home' %}" class="dashboard-heading"><h1 class="text-white">Admin Dashboard</h1></a>              
+                  <div class="dashboard-item">
+                    <a href="{% url 'add-locations' %}" class="mt-5">Add Location</a>
+                </div>
+                <div class="dashboard-item">
+                    <a href="{% url 'pending-list' %}">Pending Requests</a>
+                </div>
+                <div class="dashboard-item">
+                    <a href="{% url 'change_password' %}">Change Password</a>
+                </div>
+                <div class="dashboard-item">
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="col main-content bg-white">
+                <div class="container">
+                    <form class="form-control w-50 h-45 shadow" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="text-center">
+                            <span class="h2 fw-bold">ADD LOCATION</span>
+                        </div>
+                        <div class="mt-4 mb-4">
+                            <input class="form-control" placeholder="Enter Location" type="text" name="name" id="">
+                        </div>
+                        <div class="text-center mb-3 mt-3">
+                            <button class="btn btn-primary mt-3">Add</button>
+                            <button class="btn btn-danger mt-3">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
